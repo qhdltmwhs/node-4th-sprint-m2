@@ -3,7 +3,7 @@ import instance from "../api/axios.js";
 // const BASE_URL = "https://panda-market-api-crud.vercel.app";
 
 // [Get] findAll (https://panda-market-api-crud.vercel.app/products)
-export async function getProductList(options) {
+export async function getProductList(options = {}) {
     const defaultParams = {
         page: 1,
         pageSize: 10,
