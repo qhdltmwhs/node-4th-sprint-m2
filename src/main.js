@@ -3,7 +3,7 @@ import * as ProductApi from "./services/ProductService.js";
 import { Product} from "./classes/Product.js";
 import { ElectronicProduct } from "./classes/ElectronicProduct.js";
 
-// === Article === //   
+// === Article Test === //   
 
 const articleQueryParams = {
     page: 1,
@@ -38,7 +38,7 @@ console.log(updateArticle);
 const deleteArticleId = await ArticleApi.deleteArticle(updateArticle.id);
 console.log(deleteArticleId);
 
-// === Product === //
+// === Product Test === //
 
 const productQueryParams = {
     page: 1,
@@ -51,11 +51,12 @@ const findProductList = await ProductApi.getProductList(productQueryParams);
 const { list: productItems } = findProductList;
 
 const products = [];
+const targetTag = '전자제품';
 
 productItems.forEach((prod) => {
     const { name, description, price, tags, images, manufacturer } = prod;
 
-    if (tags && tags.includes("#전자제품")) {
+    if (tags && tags.includes(targetTag)) {
         const electronicProduct = new ElectronicProduct({
             name,
             description,
