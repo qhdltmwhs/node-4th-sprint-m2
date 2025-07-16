@@ -23,8 +23,8 @@ const newArticle = {
     image: 'https://dummyimage.com/150x150'
 };
 
-const article1 = await ArticleApi.createArticle(newArticle);
-console.log(article1);
+const createdArticle = await ArticleApi.createArticle(newArticle);
+console.log(createdArticle);
 
 const updateArticleData = {
     title: 'nodejs backend 4th team1',
@@ -32,11 +32,11 @@ const updateArticleData = {
     image: 'https://dummyimage.com/150x150'
 };
 
-const updateArticle = await ArticleApi.patchArticle(article1.id, updateArticleData);
-console.log(updateArticle);
+const updatedArticle = await ArticleApi.patchArticle(createdArticle.id, updateArticleData);
+console.log(updatedArticle);
 
-const deleteArticleId = await ArticleApi.deleteArticle(updateArticle.id);
-console.log(deleteArticleId);
+const deletedArticleResult = await ArticleApi.deleteArticle(updatedArticle.id);
+console.log(deletedArticleResult);
 
 // === Product Test === //
 
@@ -96,8 +96,8 @@ const newProduct = {
     images: ['https://dummyimage.com/150x150']
 };
 
-const product1 = await ProductApi.createProduct(newProduct);
-console.log(product1);
+const createdProduct = await ProductApi.createProduct(newProduct);
+console.log(createdProduct);
 
 const updateProductData = {
     name: 'NEW 전자제품',
@@ -107,8 +107,8 @@ const updateProductData = {
     images: ['https://dummyimage.com/150x150']
 };
 
-const updateProduct = await ProductApi.patchProduct(product1.id, updateProductData);
-console.log(updateProduct);
+const updatedProduct = await ProductApi.patchProduct(createdProduct.id, updateProductData);
+console.log(updatedProduct);
 
-const deleteProductId = await ProductApi.deleteProduct(updateProduct.id);
-console.log(deleteProductId);
+const deletedProductResult = await ProductApi.deleteProduct(updatedProduct.id);
+console.log(deletedProductResult);
