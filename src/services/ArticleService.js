@@ -1,14 +1,14 @@
 import instance from "../api/axios.js";
 
-// [Get] findAll (https://panda-market-api-crud.vercel.app/articles)
-export function getArticleList(options = {}) {
+// [GET] findAll (https://panda-market-api-crud.vercel.app/articles)
+export function getArticleList(queryParams = {}) {
     const defaultParams = {
         page: 1,
         pageSize: 10,
         keyword: "뉴진스",
     };
 
-    const params = { ...defaultParams, ...options };
+    const params = { ...defaultParams, ...queryParams };
 
     // Promise를 직접 반환하고, .then/.catch에서 처리
     return instance.get(`/articles`, { params })
@@ -20,7 +20,7 @@ export function getArticleList(options = {}) {
         });
 }
 
-// [Get] findById (https://panda-market-api-crud.vercel.app/articles/1)
+// [GET] findById (https://panda-market-api-crud.vercel.app/articles/{id})
 export function getArticle(id) {
     return instance.get(`/articles/${id}`)
         .then(response => {
@@ -31,7 +31,7 @@ export function getArticle(id) {
         });
 }
 
-// [POST] add (https://panda-market-api-crud.vercel.app/articles)
+// [POST] create (https://panda-market-api-crud.vercel.app/articles)
 export function createArticle(article) {
     return instance.post(`/articles`, article)
         .then(response => {
@@ -42,7 +42,7 @@ export function createArticle(article) {
         });
 }
 
-// [PATCH] updateById (https://panda-market-api-crud.vercel.app/articles/1)
+// [PATCH] updateById (https://panda-market-api-crud.vercel.app/articles/{id})
 export function patchArticle(id, updateData) {
     return instance.patch(`/articles/${id}`, updateData)
         .then(response => {
@@ -53,7 +53,7 @@ export function patchArticle(id, updateData) {
         });
 }
 
-// [DELETE] deleteById (https://panda-market-api-crud.vercel.app/articles/1)
+// [DELETE] deleteById (https://panda-market-api-crud.vercel.app/articles/{id})
 export function deleteArticle(id) {
     return instance.delete(`/articles/${id}`)
         .then(response => {

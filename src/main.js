@@ -3,15 +3,15 @@ import * as ProductApi from "./services/ProductService.js";
 import { Product} from "./classes/Product.js";
 import { ElectronicProduct } from "./classes/ElectronicProduct.js";
 
-// === Article === //
+// === Article === //   
 
-const articleOptions = {
+const articleQueryParams = {
     page: 1,
     pageSize: 10,
     keyword: "작성",
 };
 
-const findArticleList = await ArticleApi.getArticleList(articleOptions);
+const findArticleList = await ArticleApi.getArticleList(articleQueryParams);
 console.log(findArticleList);
 
 const findArticle = await ArticleApi.getArticle(findArticleList.list[2].id);
@@ -40,13 +40,13 @@ console.log(deleteArticleId);
 
 // === Product === //
 
-const productOptions = {
+const productQueryParams = {
     page: 1,
     pageSize: 10,
     keyword: "전자제품",
 };
 
-const findProductList = await ProductApi.getProductList(productOptions);
+const findProductList = await ProductApi.getProductList(productQueryParams);
 // console.log(findProductList); // 실제 응답 data
 const { list: productItems } = findProductList;
 

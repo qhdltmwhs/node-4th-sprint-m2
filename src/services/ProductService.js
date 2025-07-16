@@ -1,14 +1,14 @@
 import instance from "../api/axios.js";
 
-// [Get] findAll (https://panda-market-api-crud.vercel.app/products)
-export async function getProductList(options = {}) {
+// [GET] findAll (https://panda-market-api-crud.vercel.app/products)
+export async function getProductList(queryParams = {}) {
     const defaultParams = {
         page: 1,
         pageSize: 10,
         keyword: "NEW",
     };
 
-    const params = { ...defaultParams, ...options };
+    const params = { ...defaultParams, ...queryParams };
 
     try {
         const response = await instance.get(`/products`, { params });
@@ -18,7 +18,7 @@ export async function getProductList(options = {}) {
     }
 }
 
-// [Get] findById (https://panda-market-api-crud.vercel.app/products/1)
+// [GET] findById (https://panda-market-api-crud.vercel.app/products/{id})
 export async function getProduct(id) {
     try {
         const response = await instance.get(`/products/${id}`);
@@ -28,7 +28,7 @@ export async function getProduct(id) {
     }
 }
 
-// [POST] add (https://panda-market-api-crud.vercel.app/products)
+// [POST] create (https://panda-market-api-crud.vercel.app/products)
 export async function createProduct(product) {
     try {
         const response = await instance.post(`/products`, product);
@@ -38,7 +38,7 @@ export async function createProduct(product) {
     }
 }
 
-// [PATCH] updateById (https://panda-market-api-crud.vercel.app/products/1)
+// [PATCH] updateById (https://panda-market-api-crud.vercel.app/products/{id})
 export async function patchProduct(id, updateData) {
     try {
         const response = await instance.patch(`/products/${id}`, updateData);
@@ -48,7 +48,7 @@ export async function patchProduct(id, updateData) {
     }
 }
 
-// [DELETE] deleteById (https://panda-market-api-crud.vercel.app/products/1)
+// [DELETE] deleteById (https://panda-market-api-crud.vercel.app/products/{id})
 export async function deleteProduct(id) {
     try {
         const response = await instance.delete(`/products/${id}`);
@@ -57,3 +57,4 @@ export async function deleteProduct(id) {
         console.log(`${error.name} : ${error.message}`);
     }
 }
+
